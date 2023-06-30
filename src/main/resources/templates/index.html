@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Tests</title>
+<div style="text-align: center;">
+<h1>Добро пожаловать!</h1>
+</div>
+	<style>
+	button {
+		font-size: 1.5rem;
+	}
+	</style>
+</head>
+<body>
+
+<h3 style="max-width: 800px;text-align: center; margin-left:auto;margin-right:auto;">На этой странице вы можете пройти тестирование по java-разработке. Тест представляет собой
+<span th:text="${questionsNumber}">10</span> вопросов с несколькими вариантами ответа. В данной версии теста предусмотрен только
+один ответ. По завершении прохождения теста будет представлена информация о результатах.</h3>
+	<div style="text-align: center;">
+		<form action="test.html" th:action="${testlink}" method="get">
+			<button>Начать!</button>
+		</form>
+	</div>
+<!-- <p th:text="#{home.welcome}">Welcome to lessons for Java!</p>  -->
+</body>
+</html>

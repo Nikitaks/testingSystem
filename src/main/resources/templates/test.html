@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Running test</title>
+	<div style="text-align: center;">
+	<h2>Вопрос № <span th:text="${questionNumber}">1</span></h2>
+	</div>
+	<style>
+	.inactive {
+		opacity: .65;
+  		pointer-events: none;
+  		text-align: center;
+	}
+	input:checked ~ .inactive {
+		opacity: 1;
+  		pointer-events: auto;
+	}
+	.radoigroup {
+		max-width: 500px;
+		margin-left:auto;
+		margin-right:auto;
+		text-align: left;
+		font-size: 1.5rem;
+	}
+	.answergroup {
+		text-align: center;
+	}
+	.header {
+		max-width: 800px;
+		margin-left:auto;
+		margin-right:auto;
+		text-align: center;
+		min-height: 150px;
+	}
+	button, p, a {
+		font-size: 1.5rem;
+	}
+	</style>
+</head>
+<body>
+	<h2 class="header" th:text="${question_text}">
+	Назовите утилитный класс, содержащий статические методы для работы с коллекциями.
+	</h2>
+	<div class="answergroup">
+		<form action="test.html" th:action="${testlink}" method="post">
+			<p>Выберите единственный ответ:</p>
+			<div class="radoigroup">
+				<th:block th:each="answer,iterStat : ${answers}">
+					<br><input type="radio"	id="answer0" name="answer" value="0"
+				 		th:id="'answer' + ${iterStat.index}" th:value="${iterStat.index}">
+					<label for="answer0" th:text="${answer}"
+						th:for="'answer' + ${iterStat.index}">
+						java.util.Collections
+					</label>
+				</th:block>
+
+				<div class="inactive">
+					<br><button type="submit">
+					Следующий вопрос</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<br>
+	<br>
+	<br>
+	<h4 class="answergroup"><a href="index.html" th:href="${mainPageLink}">
+	На главную</a></h4>
+
+
+</body>
+</html>

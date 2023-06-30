@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Results</title>
+	<div style="text-align: center;">
+	<h1>Результаты теста</h1>
+	</div>
+	<style>
+	.inactive {
+		opacity: .65;
+  		pointer-events: none;
+  		text-align: center;
+	}
+	input:checked ~ .inactive {
+		opacity: 1;
+  		pointer-events: auto;
+	}
+	.radoigroup {
+		max-width: 500px;
+		margin-left:auto;
+		margin-right:auto;
+		text-align: left;
+	}
+	.answergroup {
+		text-align: center;
+	}
+	.header {
+		max-width: 800px;
+		margin-left:auto;
+		margin-right:auto;
+		text-align: center;
+	}
+	button, p {
+		font-size: 1.5rem;
+	}
+	</style>
+</head>
+<body>
+	<h2 class="header">
+	Тест пройден с количеством правильных ответов
+	<span th:text="${correct_answer_number}">7</span> из
+	<span th:text="${questionsNumber}">10</span>
+	</h2>
+	<div class="answergroup">
+		<p th:unless="${allCorrect}">Вопросы, на которые был дан неверный ответ:</p>
+		<p th:if="${allCorrect}">Поздравляем! Вы дали верные ответы на все вопросы.</p>
+		<div class="radoigroup">
+			<p th:each="incorrect_question : ${incorrect_questions}"
+			   th:text="${incorrect_question}">
+			Назовите утилитный класс, содержащий статические методы для работы
+			с коллекциями.</p>
+
+		</div>
+		<div style="text-align: center;">
+		<form action="index.html" th:action="${mainPageLink}" method="get">
+			<button>На главную страницу</button>
+		</form>
+	</div>
+	</div>
+</body>
+</html>
