@@ -96,7 +96,7 @@ public class DaoInMemory implements Dao {
 		correctAnswer = 0;
 		taskList[i++] = new TestTask(question, answers, correctAnswer);
 
-		question = "Укажите шаблон проектирования, абстрагирует доступ к данным от механизма"
+		question = "Укажите шаблон проектирования, который абстрагирует доступ к данным от механизма"
 				+ " их хранения.";
 		answers = new String[]{"Singleton", "Strategy", "Factory", "Data Access Object"};
 		correctAnswer = 3;
@@ -116,12 +116,12 @@ public class DaoInMemory implements Dao {
 		correctAnswer = 1;
 		taskList[i++] = new TestTask(question, answers, correctAnswer);
 
-		question = "Укажите HPPT-метод, который является идемпотентной версией POST.";
+		question = "Укажите HTTP-метод, который является идемпотентной версией POST.";
 		answers = new String[]{"PUT", "HEAD", "PATCH", "TRACE"};
 		correctAnswer = 0;
 		taskList[i++] = new TestTask(question, answers, correctAnswer);
 
-		question = "Укажите HPPT-метод, функция которого только в модификации существующего ресурса.";
+		question = "Укажите HTTP-метод, функция которого только в модификации существующего ресурса.";
 		answers = new String[]{"PUT", "HEAD", "PATCH", "TRACE"};
 		correctAnswer = 2;
 		taskList[i++] = new TestTask(question, answers, correctAnswer);
