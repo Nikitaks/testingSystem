@@ -16,7 +16,14 @@ public class Application {
 
 	@Bean
 	public Dao dao() {
-		return new DaoInMemory();
+		//Uncomment to use In-memory-database
+		//return new DaoInMemory();
+
+		//Uncomment to use MySQL-database
+		DaoInDatabase dao = new DaoInDatabase();
+		dao.loadConfigFile();
+		dao.makeConnection();
+		return dao;
 	}
 
     public static void main(String[] args) {

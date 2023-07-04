@@ -73,7 +73,6 @@ public class ModelTest {
 
 	public void loadTasks(Dao dao) throws NotEnoughQuestionsException {
 		taskList = dao.getTasks(questionsNumber);
-		//loadTasksFromDatabase();
 	}
 
 	public static void main(String[] args) throws NotEnoughQuestionsException {

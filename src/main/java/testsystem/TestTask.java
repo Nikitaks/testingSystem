@@ -1,5 +1,7 @@
 package testsystem;
 
+import java.util.Arrays;
+
 public class TestTask {
 
 	private String question;
@@ -12,6 +14,12 @@ public class TestTask {
 		this.question = question;
 		this.answers = answers;
 		this.correctAnswer = correctAnswer;
+	}
+
+	@Override
+	public String toString() {
+		return "TestTask [question=" + question + ", answers=" + Arrays.toString(answers) + ", correctAnswer="
+				+ correctAnswer + "]";
 	}
 
 	public void setUserAnswer(int userAnswer) {
