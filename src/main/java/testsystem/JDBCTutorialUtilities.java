@@ -65,40 +65,6 @@ public class JDBCTutorialUtilities {
   private int portNumber;
   private Properties prop;
 
-  /*public static void initializeTables(Connection con, String dbNameArg, String dbmsArg) throws SQLException {
-    SuppliersTable mySuppliersTable =
-      new SuppliersTable(con, dbNameArg, dbmsArg);
-    CoffeesTable myCoffeeTable =
-      new CoffeesTable(con, dbNameArg, dbmsArg);
-    RSSFeedsTable myRSSFeedsTable =
-      new RSSFeedsTable(con, dbNameArg, dbmsArg);
-    ProductInformationTable myPIT =
-      new ProductInformationTable(con, dbNameArg, dbmsArg);
-
-    System.out.println("\nDropping exisiting PRODUCT_INFORMATION, COFFEES and SUPPLIERS tables");
-    myPIT.dropTable();
-    myRSSFeedsTable.dropTable();
-    myCoffeeTable.dropTable();
-    mySuppliersTable.dropTable();
-
-    System.out.println("\nCreating and populating SUPPLIERS table...");
-
-    System.out.println("\nCreating SUPPLIERS table");
-    mySuppliersTable.createTable();
-    System.out.println("\nPopulating SUPPLIERS table");
-    mySuppliersTable.populateTable();
-
-    System.out.println("\nCreating and populating COFFEES table...");
-
-    System.out.println("\nCreating COFFEES table");
-    myCoffeeTable.createTable();
-    System.out.println("\nPopulating COFFEES table");
-    myCoffeeTable.populateTable();
-
-    System.out.println("\nCreating RSS_FEEDS table...");
-    myRSSFeedsTable.createTable();
-  }
-*/
   public static void rowIdLifetime(Connection conn) throws SQLException {
     DatabaseMetaData dbMetaData = conn.getMetaData();
     RowIdLifetime lifetime = dbMetaData.getRowIdLifetime();
@@ -119,8 +85,6 @@ public class JDBCTutorialUtilities {
       System.out.println("ROWID type has lifetime that is valid for at least the containing transaction");
     }
   }
-
-
 
   public static void cursorHoldabilitySupport(Connection conn) throws SQLException {
     DatabaseMetaData dbMetaData = conn.getMetaData();
