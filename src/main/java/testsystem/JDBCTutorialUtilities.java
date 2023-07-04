@@ -291,9 +291,7 @@ public class JDBCTutorialUtilities {
                                       connectionProps);
 
       this.urlString = currentUrlString + this.dbName;
-      System.out.println(conn.getCatalog());
       conn.setCatalog(this.dbName);
-      System.out.println(conn.getCatalog());
     } else if (this.dbms.equals("derby")) {
       this.urlString = "jdbc:" + this.dbms + ":" + this.dbName;
 

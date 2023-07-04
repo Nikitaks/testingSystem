@@ -1,0 +1,71 @@
+CREATE DATABASE LEARNING DEFAULT CHARSET cp1251;
+USE LEARNING;
+CREATE TABLE SECTIONS (SECTION_ID INTEGER AUTO_INCREMENT PRIMARY KEY, TITLE VARCHAR(255) NOT NULL);
+
+CREATE TABLE QUESTIONS (QUESTION_ID INTEGER AUTO_INCREMENT PRIMARY KEY, SECTION_ID INTEGER, ANSWERS_NUMBER INTEGER NOT NULL,CORRECT_ANSWER INTEGER NOT NULL,FOREIGN KEY (SECTION_ID) REFERENCES SECTIONS (SECTION_ID));
+
+CREATE TABLE WORDINGS (QUESTION_ID INTEGER, QUESTION_TEXT VARCHAR(1023), ANSWER0 VARCHAR(255),ANSWER1 VARCHAR(255),ANSWER2 VARCHAR(255),ANSWER3 VARCHAR(255),ANSWER4 VARCHAR(255),ANSWER5 VARCHAR(255),FOREIGN KEY (QUESTION_ID) REFERENCES QUESTIONS (QUESTION_ID));
+
+set names 'cp1251';
+INSERT INTO SECTIONS SET SECTION_ID  = 7, TITLE = 'Разное';
+
+INSERT INTO QUESTIONS SET SECTION_ID  = 7, ANSWERS_NUMBER = 4, CORRECT_ANSWER = 3;
+INSERT INTO WORDINGS SET QUESTION_TEXT = 'Укажите утилитный класс, содержащий статические методы для работы с массивами.',ANSWER0 = 'Collections',ANSWER1 = 'Paths',ANSWER2 = 'Files',ANSWER3 = 'Arrays',
+QUESTION_ID = LAST_INSERT_ID();
+
+INSERT INTO QUESTIONS SET SECTION_ID  = 7, ANSWERS_NUMBER = 4, CORRECT_ANSWER = 0;
+INSERT INTO WORDINGS SET QUESTION_TEXT = 'Укажите утилитный класс, содержащий статические методы для работы с коллекциями.',ANSWER0 = 'Collections',ANSWER1 = 'Paths',ANSWER2 = 'Files',ANSWER3 = 'Arrays',
+QUESTION_ID = LAST_INSERT_ID();
+
+INSERT INTO QUESTIONS SET SECTION_ID  = 7, ANSWERS_NUMBER = 4, CORRECT_ANSWER = 2;
+INSERT INTO WORDINGS SET QUESTION_TEXT = 'Укажите утилитный класс, содержащий статические методы для работы с файлами.',ANSWER0 = 'Collections',ANSWER1 = 'Paths',ANSWER2 = 'Files',ANSWER3 = 'Arrays',
+QUESTION_ID = LAST_INSERT_ID();
+
+INSERT INTO QUESTIONS SET SECTION_ID  = 7, ANSWERS_NUMBER = 4, CORRECT_ANSWER = 1;
+INSERT INTO WORDINGS SET QUESTION_TEXT = 'Укажите утилитный класс, содержащий статические методы для работы с путями к файлам и директориям.',ANSWER0 = 'Collections',ANSWER1 = 'Paths',ANSWER2 = 'Files',ANSWER3 = 'Arrays',
+QUESTION_ID = LAST_INSERT_ID();
+
+INSERT INTO QUESTIONS SET SECTION_ID  = 7, ANSWERS_NUMBER = 4, CORRECT_ANSWER = 3;
+INSERT INTO WORDINGS SET QUESTION_TEXT = 'Укажите API для соединения с базами данных.',ANSWER0 = 'DateTime API',ANSWER1 = 'Stream API',ANSWER2 = 'Servlet API',ANSWER3 = 'JDBC API',
+QUESTION_ID = LAST_INSERT_ID();
+
+INSERT INTO QUESTIONS SET SECTION_ID  = 7, ANSWERS_NUMBER = 3, CORRECT_ANSWER = 0;
+INSERT INTO WORDINGS SET QUESTION_TEXT = 'Укажите нтерфейс Java, реализация которого расширяет функциональные возможности сервера, взаимодействует с клиентами посредством принципа запрос-ответ и могут обслуживать любые запросы.',ANSWER0 = 'Сервлет',ANSWER1 = 'Сессия',ANSWER2 = 'BaseStream',
+QUESTION_ID = LAST_INSERT_ID();
+
+INSERT INTO QUESTIONS SET SECTION_ID  = 7, ANSWERS_NUMBER = 2, CORRECT_ANSWER = 1;
+INSERT INTO WORDINGS SET QUESTION_TEXT = 'Укажите типовые каталоги структуры веб-проекта.',ANSWER0 = 'bin,lib,include',ANSWER1 = 'src,main,java,resources,test',
+QUESTION_ID = LAST_INSERT_ID();
+
+INSERT INTO QUESTIONS SET SECTION_ID  = 7, ANSWERS_NUMBER = 4, CORRECT_ANSWER = 1;
+INSERT INTO WORDINGS SET QUESTION_TEXT = 'Как называется программа, представляющая собой сервер, который занимается системной поддержкой сервлетов и обеспечивает их жизненный цикл в соответствии с правилами, определёнными в спецификациях? Она является поставщиком страниц для другого веб-сервера, берёт на себя выполнение таких функций, как создание программной среды для функционирующего сервлета, идентификацию и авторизацию клиентов, организацию сессии для каждого из них.',ANSWER0 = 'Веб-сервер',ANSWER1 = 'Контейнер сервлетов',ANSWER2 = 'СУБД',ANSWER3 = 'Фреймворк',
+QUESTION_ID = LAST_INSERT_ID();
+
+INSERT INTO QUESTIONS SET SECTION_ID  = 7, ANSWERS_NUMBER = 4, CORRECT_ANSWER = 2;
+INSERT INTO WORDINGS SET QUESTION_TEXT = 'Укажите шаблон проектирования, который позволяет создавать различные объекты в зависимости от некоторых условий. ',ANSWER0 = 'Singleton',ANSWER1 = 'Strategy',ANSWER2 = 'Factory',ANSWER3 = 'Data Access Object',
+QUESTION_ID = LAST_INSERT_ID();
+
+INSERT INTO QUESTIONS SET SECTION_ID  = 7, ANSWERS_NUMBER = 4, CORRECT_ANSWER = 0;
+INSERT INTO WORDINGS SET QUESTION_TEXT = 'Укажите шаблон проектирования, который реализует гарантированно только один экземпляр класса и к этому объекту предоставляется глобальная точка доступа.',ANSWER0 = 'Singleton',ANSWER1 = 'Strategy',ANSWER2 = 'Factory',ANSWER3 = 'Data Access Object',
+QUESTION_ID = LAST_INSERT_ID();
+
+INSERT INTO QUESTIONS SET SECTION_ID  = 7, ANSWERS_NUMBER = 4, CORRECT_ANSWER = 3;
+INSERT INTO WORDINGS SET QUESTION_TEXT = 'Укажите шаблон проектирования, который абстрагирует доступ к данным от механизма их хранения.',ANSWER0 = 'Singleton',ANSWER1 = 'Strategy',ANSWER2 = 'Factory',ANSWER3 = 'Data Access Object',
+QUESTION_ID = LAST_INSERT_ID();
+
+INSERT INTO QUESTIONS SET SECTION_ID  = 7, ANSWERS_NUMBER = 4, CORRECT_ANSWER = 1;
+INSERT INTO WORDINGS SET QUESTION_TEXT = 'Укажите шаблон проектирования, предназначенный для определения семейства алгоритмов, инкапсуляции каждого из них и обеспечения их взаимозаменяемости. Этот паттерн позволяет выбирать алгоритм путём определения соответствующего класса, а так же менять выбранный алгоритм независимо от объектов-клиентов, которые его используют.',ANSWER0 = 'Singleton',ANSWER1 = 'Strategy',ANSWER2 = 'Factory',ANSWER3 = 'Data Access Object',
+QUESTION_ID = LAST_INSERT_ID();
+
+INSERT INTO QUESTIONS SET SECTION_ID  = 7, ANSWERS_NUMBER = 4, CORRECT_ANSWER = 1;
+INSERT INTO WORDINGS SET QUESTION_TEXT = 'Укажите HTTP-метод, запрашивающий только заголовок ресурса.',ANSWER0 = 'PUT',ANSWER1 = 'HEAD',ANSWER2 = 'PATCH',ANSWER3 = 'TRACE',
+QUESTION_ID = LAST_INSERT_ID();
+
+INSERT INTO QUESTIONS SET SECTION_ID  = 7, ANSWERS_NUMBER = 4, CORRECT_ANSWER = 0;
+INSERT INTO WORDINGS SET QUESTION_TEXT = 'Укажите HTTP-метод, который является идемпотентной версией POST.',ANSWER0 = 'PUT',ANSWER1 = 'HEAD',ANSWER2 = 'PATCH',ANSWER3 = 'TRACE',
+QUESTION_ID = LAST_INSERT_ID();
+
+INSERT INTO QUESTIONS SET SECTION_ID  = 7, ANSWERS_NUMBER = 4, CORRECT_ANSWER = 2;
+INSERT INTO WORDINGS SET QUESTION_TEXT = 'Укажите HTTP-метод, функция которого только в модификации существующего ресурса.',ANSWER0 = 'PUT',ANSWER1 = 'HEAD',ANSWER2 = 'PATCH',ANSWER3 = 'TRACE',
+QUESTION_ID = LAST_INSERT_ID();
+set names 'cp866';

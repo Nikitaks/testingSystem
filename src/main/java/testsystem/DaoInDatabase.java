@@ -51,10 +51,9 @@ public class DaoInDatabase implements Dao {
 		JDBCTutorialUtilities.closeConnection(this.con);
 	}
 
-	public void loadConfigFile() {
+	public void loadConfigFile(String databaseConfigPath) {
 		try {
-			myJDBCTutorialUtilities = new JDBCTutorialUtilities("properties\\mysql-sample-properties.xml");
-
+			myJDBCTutorialUtilities = new JDBCTutorialUtilities(databaseConfigPath);
 		} catch (Exception e) {
 			System.err.println("Problem reading properties file ");
 			e.printStackTrace();
@@ -126,10 +125,11 @@ public class DaoInDatabase implements Dao {
 	}
 
 	public static void main(String[] args) throws SQLException, NotEnoughQuestionsException {
+		String databaseConfigPath = "properties/mysql-sample-properties.xml";
 		System.out.println("Start...");
 
 		DaoInDatabase myWordings = new DaoInDatabase();
-		myWordings.loadConfigFile();
+		myWordings.loadConfigFile(databaseConfigPath);
 		myWordings.makeConnection();
 
 		System.out.println("\nTrying Question.");
