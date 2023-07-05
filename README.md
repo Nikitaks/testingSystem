@@ -27,8 +27,7 @@
 4. Дождаться успешного окончания сборки проекта.
 5. Выбрать тип хранилища.
    1. Для использования хранилища непосредственно из вспомогательного класса можно переходить к пункту 6.
-   2. Для использования хранилища MySQL установить параметр `dataBaseType=SQLDatabase` в файле `src\main\resources\properties\app.properties`.
-   3. Установить MySQL Server.
+   2. Для использования хранилища MySQL установить параметр `dataBaseType=SQLDatabase` в файле `src\main\resources\properties\app.properties`. Развернуть базу данных, выполнив следующие действия:
       1. Установить сервер MySQL со стандартными параметрами (userName: root, password:root, serverName: localhost, portNumber: 3306).
       2. Открыть клиент MySQL Client и ввести пароль root.
       3. Выполнить размещение базы в клиенте MySQL путем запуска скрипта командой 
