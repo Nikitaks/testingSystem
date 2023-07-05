@@ -26,12 +26,15 @@
 - Создать конфигурацию запуска с goals `clean install`, запустить конфигурацию на исполнение.
 4. Дождаться успешного окончания сборки проекта.
 5. Выбрать тип хранилища.
-- 1. Для использования хранилища непосредственно из вспомогательного класса можно переходить к пункту 6.
-- 2. Для использования хранилища MySQL установить параметр `dataBaseType=SQLDatabase` в файле `src\main\resources\properties\app.properties`.
-- 3. 1. Установить сервер MySQL со стандартными параметрами (userName: root, password:root, serverName: localhost, portNumber: 3306).
-- 3. 2. Открыть клиент MySQL Client и ввести пароль root.
-- 3. 3. Выполнить размещение базы в клиенте MySQL путем запуска скрипта командой 
-`source <абсолютный путь к файлу src\main\resources\DatabaseFill.txt>`.
+   1. Для использования хранилища непосредственно из вспомогательного класса можно переходить к пункту 6.
+   2. Для использования хранилища MySQL установить параметр `dataBaseType=SQLDatabase` в файле `src\main\resources\properties\app.properties`.
+   3. Установить MySQL Server.
+      1. Установить сервер MySQL со стандартными параметрами (userName: root, password:root, serverName: localhost, portNumber: 3306).
+      2. Открыть клиент MySQL Client и ввести пароль root.
+      3. Выполнить размещение базы в клиенте MySQL путем запуска скрипта командой 
+         ```
+         source <абсолютный путь к файлу src\main\resources\DatabaseFill.txt>
+         ```
 6. Запустить на исполнение приложение Application.java
 7. Перейти на главную страницу localhost:8080/ с локального компьютера или с компьютера подсети.
 
