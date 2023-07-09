@@ -1,8 +1,12 @@
-package testsystem;
+package data.inmemory;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import data.Dao;
+import exceptions.NotEnoughQuestionsException;
+import testsystem.TestTask;
 
 public class DaoInMemory implements Dao {
 

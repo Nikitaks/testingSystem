@@ -3,9 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Running test</title>
-	<div style="text-align: center;">
-	<h2>Вопрос № <span th:text="${questionNumber}">1</span></h2>
-	</div>
+	
 	<style>
 	.inactive {
 		opacity: .65;
@@ -39,6 +37,12 @@
 	</style>
 </head>
 <body>
+	<div style="text-align: center;">
+		<h2>
+			Вопрос № <span th:text="${questionNumber}">1</span>
+		</h2>
+	</div>
+
 	<h2 class="header" th:text="${question_text}">
 	Назовите утилитный класс, содержащий статические методы для работы с коллекциями.
 	</h2>

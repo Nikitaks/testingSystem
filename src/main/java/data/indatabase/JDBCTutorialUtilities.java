@@ -29,7 +29,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package testsystem;
+package data.indatabase;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

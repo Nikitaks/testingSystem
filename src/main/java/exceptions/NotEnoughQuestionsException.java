@@ -1,4 +1,4 @@
-package testsystem;
+package exceptions;
 
 public class NotEnoughQuestionsException extends Exception {
 

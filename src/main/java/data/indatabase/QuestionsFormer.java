@@ -1,4 +1,4 @@
-package testsystem;
+package data.indatabase;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.annotation.PreDestroy;
+import testsystem.TestTask;
 
-public class DaoInDatabase implements Dao {
+
+public class QuestionsFormer {
 
 	private String dbName;
 	private Connection con;
-	private JDBCTutorialUtilities myJDBCTutorialUtilities;
 
 	private static final String[] answerNumberVariants = {"", "",
 			"ANSWER0, ANSWER1",
@@ -24,41 +24,19 @@ public class DaoInDatabase implements Dao {
 			"ANSWER0, ANSWER1, ANSWER2, ANSWER3, ANSWER4, ANSWER5"
 			};
 
-	public DaoInDatabase(Connection connArg, String dbNameArg) {
+	public QuestionsFormer(Connection connArg, String dbNameArg) {
 		super();
 		this.con = connArg;
 		this.dbName = dbNameArg;
 	}
 
-	public DaoInDatabase(Connection connArg) {
+	public QuestionsFormer(Connection connArg) {
 		super();
 		this.con = connArg;
 	}
 
-	public DaoInDatabase() {
+	public QuestionsFormer() {
 		super();
-	}
-
-	public void makeConnection() {
-		try {
-			this.con = myJDBCTutorialUtilities.getConnection();
-		} catch (SQLException e) {
-			JDBCTutorialUtilities.printSQLException(e);
-		}
-	}
-	@PreDestroy
-	public void closeConnection() {
-		JDBCTutorialUtilities.closeConnection(this.con);
-	}
-
-	public void loadConfigFile(String databaseConfigPath) {
-		try {
-			myJDBCTutorialUtilities = new JDBCTutorialUtilities(databaseConfigPath);
-		} catch (Exception e) {
-			System.err.println("Problem reading properties file ");
-			e.printStackTrace();
-			return;
-		}
 	}
 
 	public void showFormedQuestion(TestTask task) throws SQLException {
@@ -101,8 +79,7 @@ public class DaoInDatabase implements Dao {
 		return task;
 	}
 
-	@Override
-	public TestTask[] getTasks(int questionsNumber) throws NotEnoughQuestionsException {
+	public TestTask[] formRandomSetOfQuestion(int questionsNumber) throws SQLException {
 		TestTask[] taskSet = new TestTask[questionsNumber];
 		try (Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
 			List<Integer> list = new ArrayList<>();
@@ -124,19 +101,42 @@ public class DaoInDatabase implements Dao {
 		return taskSet;
 	}
 
-	public static void main(String[] args) throws SQLException, NotEnoughQuestionsException {
-		String databaseConfigPath = "properties/mysql-sample-properties.xml";
+	public static void main(String[] args) throws SQLException {
 		System.out.println("Start...");
 
-		DaoInDatabase myWordings = new DaoInDatabase();
-		myWordings.loadConfigFile(databaseConfigPath);
+		QuestionsFormer myWordings = new QuestionsFormer();
+		myWordings.loadConfigFile();
 		myWordings.makeConnection();
 
 		System.out.println("\nTrying Question.");
 
-		for (TestTask task : myWordings.getTasks(5))
+		for (TestTask task : myWordings.formRandomSetOfQuestion(5))
 			myWordings.showFormedQuestion(task);
 
 		myWordings.closeConnection();
+	}
+
+	private void makeConnection() {
+		try {
+			this.con = myJDBCTutorialUtilities.getConnection();
+		} catch (SQLException e) {
+			JDBCTutorialUtilities.printSQLException(e);
+		}
+	}
+
+	private void closeConnection() {
+		JDBCTutorialUtilities.closeConnection(this.con);
+	}
+
+	private JDBCTutorialUtilities myJDBCTutorialUtilities;
+	private void loadConfigFile() {
+		try {
+			myJDBCTutorialUtilities = new JDBCTutorialUtilities("properties\\mysql-sample-properties.xml");
+
+		} catch (Exception e) {
+			System.err.println("Problem reading properties file ");
+			e.printStackTrace();
+			return;
+		}
 	}
 }

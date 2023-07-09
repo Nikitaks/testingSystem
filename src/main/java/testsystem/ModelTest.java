@@ -2,6 +2,10 @@ package testsystem;
 
 import java.util.Arrays;
 
+import data.Dao;
+import data.inmemory.DaoInMemory;
+import exceptions.NotEnoughQuestionsException;
+
 
 public class ModelTest {
 
