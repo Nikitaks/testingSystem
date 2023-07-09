@@ -2,9 +2,9 @@ package testsystem;
 
 import java.util.Arrays;
 
-import data.Dao;
-import data.inmemory.DaoInMemory;
-import exceptions.NotEnoughQuestionsException;
+import testsystem.data.Dao;
+import testsystem.data.inmemory.DaoInMemory;
+import testsystem.exceptions.NotEnoughQuestionsException;
 
 
 public class ModelTest {

@@ -7,9 +7,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.context.annotation.SessionScope;
 
-import data.Dao;
-import data.inmemory.DaoInMemory;
-import data.indatabase.DaoInDatabase;
+import testsystem.data.Dao;
+import testsystem.data.inmemory.DaoInMemory;
+import testsystem.data.indatabase.DaoInDatabase;
 
 @SpringBootApplication
 @PropertySource("file:src/main/resources/properties/app.properties")

@@ -1,4 +1,4 @@
-package controllers;
+package testsystem.controllers;
 
 
 import org.apache.logging.log4j.LogManager;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import data.Dao;
-import exceptions.NotEnoughQuestionsException;
+import testsystem.data.Dao;
+import testsystem.exceptions.NotEnoughQuestionsException;
 import testsystem.ModelTest;
 
 

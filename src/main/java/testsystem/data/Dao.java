@@ -1,6 +1,6 @@
-package data;
+package testsystem.data;
 
-import exceptions.NotEnoughQuestionsException;
+import testsystem.exceptions.NotEnoughQuestionsException;
 import testsystem.TestTask;
 
 public interface Dao {
