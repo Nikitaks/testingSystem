@@ -26,9 +26,9 @@ public class QuestionsController {
     @Autowired
     private WordingsService wordingsService;
 
-    @RequestMapping("/")
+    @RequestMapping("/jpa")
     public ModelAndView home() {
-        ModelAndView mav = new ModelAndView("index");
+        ModelAndView mav = new ModelAndView("indexjpa");
         return mav;
     }
 

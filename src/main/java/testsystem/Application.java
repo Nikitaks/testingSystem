@@ -3,6 +3,7 @@ package testsystem;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.context.annotation.SessionScope;
@@ -11,10 +12,9 @@ import testsystem.data.Dao;
 import testsystem.data.inmemory.DaoInMemory;
 import testsystem.data.indatabase.DaoInDatabase;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
 @PropertySource("file:src/main/resources/properties/app.properties")
 public class Application {
-
 	private String databaseConfigPath = "src/main/resources/properties/mysql-sample-properties.xml";
 
 	@Value( "${dataBaseType:inMemoryDatabase}" )
