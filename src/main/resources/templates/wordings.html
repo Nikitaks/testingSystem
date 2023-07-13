@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Wordings Manager</title>
+</head>
+<body>
+<div align="center">
+    <h2>Wordings Manager</h2>
+    <form method="get" action="search">
+        <input type="text" name="keyword" />
+        <input type="submit" value="Search" />
+    </form>
+    <h3><a href="/new">New Wording</a></h3>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>question_id</th>
+            <th>question_text</th>
+            <th>answer0</th>
+            <th>answer1</th>
+            <th>answer2</th>
+            <th>answer3</th>
+            <th>number_answers</th>
+            <th>correct_answer</th>
+        </tr>
+        <th:block th:each="wording : ${listWordings}">
+        <tr>
+            <td th:text="${wording.question_id}">${wording.question_id}</td>
+            <td th:text="${wording.question_text}">${wording.question_text}</td>
+            <td th:text="${wording.answer0}">${wording.answer0}</td>
+            <td th:text="${wording.answer1}">${wording.answer1}</td>
+            <td th:text="${wording.answer2}">${wording.answer2}</td>
+            <td th:text="${wording.answer3}">${wording.answer3}</td>
+            <td th:text="${wording.questions.answers_number}">${wording.questions.answers_number}</td>
+            <td th:text="${wording.questions.correct_answer}">${wording.questions.correct_answer}</td>
+            <td>
+                <a href="/edit?id=${wording.question_id}">Edit</a>
+
+                <a href="/delete?id=${wording.question_id}">Delete</a>
+            </td>
+        </tr>
+        </th:block>
+    </table>
+</div>
+</body>
+</html>
