@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+import testsystem.data.jpa.wordings.Wordings;
 
 @Entity
 public class Questions {
@@ -14,6 +18,12 @@ public class Questions {
     private Long section_id;
     private int answers_number;
     private int correct_answer;
+
+    //relations
+    @OneToOne
+    @JoinColumn(name = "question_id", insertable = false,
+    			updatable = false)
+    private Wordings wordings;
 
     protected Questions() {
     }
@@ -56,4 +66,20 @@ public class Questions {
 	public void setCorrect_answer(int correct_answer) {
 		this.correct_answer = correct_answer;
 	}
+
+
+	public Wordings getWordings() {
+		return wordings;
+	}
+
+	public void setWordings(Wordings wordings) {
+		this.wordings = wordings;
+	}
+
+	@Override
+	public String toString() {
+		return "Questions [question_id=" + question_id + ", section_id=" + section_id + ", answers_number="
+				+ answers_number + ", correct_answer=" + correct_answer + "]";
+	}
+
 }

@@ -27,4 +27,10 @@ public class QuestionsService {
         repo.deleteById(id);
     }
 
+    public List<Long> getQuestions_id() {
+    	return repo.getQuestions_id();
+    }
+    public Iterable<Questions> findAllById(Iterable<Long> ids) {
+    	return repo.findAllById(ids);
+    }
 }

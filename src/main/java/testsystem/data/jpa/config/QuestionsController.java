@@ -1,8 +1,12 @@
 package testsystem.data.jpa.config;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -11,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import testsystem.controllers.WebController;
 import testsystem.data.jpa.questions.Questions;
 import testsystem.data.jpa.questions.QuestionsService;
 import testsystem.data.jpa.wordings.Wordings;
@@ -19,6 +24,8 @@ import testsystem.data.jpa.wordings.WordingsService;
 
 @Controller
 public class QuestionsController {
+
+	private static final Logger logger = LogManager.getLogger(QuestionsController.class);
 
     @Autowired
     private QuestionsService questionsService;
@@ -37,7 +44,18 @@ public class QuestionsController {
         List<Questions> listQuestions = questionsService.listAll();
         ModelAndView mav = new ModelAndView("questions");
         mav.addObject("listQuestions", listQuestions);
-        return mav;
+        logger.info("idList: ");
+        List<Long> list = questionsService.getQuestions_id();
+		for (long i : list) {
+			logger.info(String.valueOf(i));
+		}
+		Collections.shuffle(list);
+		List<Long> shortList = list.stream().limit(5).collect(Collectors.toList());
+		logger.info("5List: ");
+		for (Questions i : questionsService.findAllById(shortList)) {
+			logger.info(i.toString() + i.getWordings().toString());
+		}
+		return mav;
     }
 
     @RequestMapping("/wordings")

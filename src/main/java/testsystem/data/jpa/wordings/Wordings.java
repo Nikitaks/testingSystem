@@ -127,4 +127,11 @@ public class Wordings {
 		this.questions = questions;
 	}
 
+	@Override
+	public String toString() {
+		return "Wordings [id=" + id + ", question_id=" + question_id + ", question_text=" + question_text + ", answer0="
+				+ answer0 + ", answer1=" + answer1 + ", answer2=" + answer2 + ", answer3=" + answer3 + ", answer4="
+				+ answer4 + ", answer5=" + answer5 + "]";
+	}
+
 }

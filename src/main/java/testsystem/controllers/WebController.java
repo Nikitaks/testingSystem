@@ -11,16 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import testsystem.data.Dao;
+import testsystem.data.jpa.config.QuestionsController;
 import testsystem.exceptions.NotEnoughQuestionsException;
 import testsystem.ModelTest;
 
 
 @Controller
 public class WebController {
+	private static final Logger logger = LogManager.getLogger(WebController.class);
 
 	private static final int QUESTIONS_NUMBER = 5;
 
-	private static final Logger logger = LogManager.getLogger(WebController.class);
 
 	@Autowired
 	private ModelTest modelTest;

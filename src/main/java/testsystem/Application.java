@@ -11,6 +11,7 @@ import org.springframework.web.context.annotation.SessionScope;
 import testsystem.data.Dao;
 import testsystem.data.inmemory.DaoInMemory;
 import testsystem.data.indatabase.DaoInDatabase;
+import testsystem.data.indatabasejpa.DaoInDatabaseJpa;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
 @PropertySource("file:src/main/resources/properties/app.properties")
@@ -36,6 +37,8 @@ public class Application {
 				dao.loadConfigFile(databaseConfigPath);
 				dao.makeConnection();
 				return dao;
+			case "JPADatabase":
+				return new DaoInDatabaseJpa();
 			default:
 				return new DaoInMemory();
 		}

@@ -34,4 +34,7 @@ public class WordingsService {
     public Page<Wordings> findAll(Pageable pageable) {
     	return repo.findAll(pageable);
     }
+    public Iterable<Wordings> findAllById(Iterable<Long> ids) {
+    	return repo.findAllById(ids);
+    }
 }
