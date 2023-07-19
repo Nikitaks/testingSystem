@@ -1,11 +1,15 @@
 package testsystem.data.jpa.questions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 import testsystem.data.jpa.wordings.Wordings;
 
@@ -25,7 +29,10 @@ public class Questions {
     			updatable = false)
     private Wordings wordings;
 
-    protected Questions() {
+    @Transient
+    private List<String> answers = new ArrayList<>();
+
+	protected Questions() {
     }
 
 	protected Questions(Long section_id, int answers_number, int correct_answer) {
@@ -74,6 +81,14 @@ public class Questions {
 
 	public void setWordings(Wordings wordings) {
 		this.wordings = wordings;
+	}
+
+	public List<String> getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(List<String> answers) {
+		this.answers = answers;
 	}
 
 	@Override

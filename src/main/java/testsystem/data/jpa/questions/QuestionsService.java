@@ -31,6 +31,15 @@ public class QuestionsService {
     	return repo.getQuestions_id();
     }
     public Iterable<Questions> findAllById(Iterable<Long> ids) {
-    	return repo.findAllById(ids);
+    	Iterable<Questions> questions = repo.findAllById(ids);
+    	for (Questions question : questions) {
+    		question.getAnswers().add(question.getWordings().getAnswer0());
+    		question.getAnswers().add(question.getWordings().getAnswer1());
+    		question.getAnswers().add(question.getWordings().getAnswer2());
+    		question.getAnswers().add(question.getWordings().getAnswer3());
+    		question.getAnswers().add(question.getWordings().getAnswer4());
+    		question.getAnswers().add(question.getWordings().getAnswer5());
+    	}
+    	return questions;
     }
 }
