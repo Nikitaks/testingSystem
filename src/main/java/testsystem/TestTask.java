@@ -26,10 +26,6 @@ public class TestTask {
 		this.userAnswer = userAnswer;
 	}
 
-	public boolean ifUserAnswerWrong() {
-		return userAnswer != correctAnswer;
-	}
-
 	public String getQuestion() {
 		return question;
 	}
@@ -38,9 +34,7 @@ public class TestTask {
 		return answers;
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public boolean ifUserAnswerWrong() {
+		return userAnswer != correctAnswer;
 	}
-
 }
