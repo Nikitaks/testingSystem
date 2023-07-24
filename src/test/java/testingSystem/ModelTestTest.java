@@ -1,5 +1,7 @@
 package testingSystem;
 
+import java.util.Arrays;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,12 +12,20 @@ import testsystem.exceptions.NotEnoughQuestionsException;
 
 public class ModelTestTest {
 	//arrange
-	ModelTest modelTest = new ModelTest();
 	private final int questionsNumber = 12;
+	TestTask[] tt = new TestTask[questionsNumber];
+	ModelTest modelTest = new ModelTest();
 
 	@Before
-	public void beforeEach() {
+	public void beforeEach() throws NotEnoughQuestionsException {
 		modelTest.init(questionsNumber);
+		for (int i = 0; i < questionsNumber; i++) {
+			String q = String.format("q%d", i);
+			tt[i] = new TestTask(
+				String.format("question%d", i),
+				new String[] {q + "0", q + "1", q + "2", q + "3"}, i % 4);
+		}
+		modelTest.setTaskList(tt);
 	}
 
 	@Test
@@ -95,5 +105,39 @@ public class ModelTestTest {
 	    } catch (Throwable e) {
 	    	Assert.fail("Exception by real question setting thrown");
 	    }
+	}
+
+	@Test
+	public void putAnswerAndIfUserAnswerWrong() {
+		try {
+			modelTest.init(1);
+			modelTest.setTaskList(new TestTask[]
+				{new TestTask("question", new String[] {"a0","a1","a2","a3"}, 2)});
+			modelTest.putAnswer(0);
+			Assert.assertTrue(modelTest.ifUserAnswerWrong());
+			modelTest.putAnswer(1);
+			Assert.assertTrue(modelTest.ifUserAnswerWrong());
+			modelTest.putAnswer(2);
+			Assert.assertFalse(modelTest.ifUserAnswerWrong());
+			modelTest.putAnswer(3);
+			Assert.assertTrue(modelTest.ifUserAnswerWrong());
+		} catch (Throwable e) {
+	    	Assert.fail("Exception by real question setting thrown");
+	    }
+	}
+
+	@Test
+	public void getStringsWrongAnswer() {
+		for (int i = 0; i < questionsNumber; i++) {
+			modelTest.putAnswer(i < questionsNumber / 2 ?
+									i % 4 : (i+1) % 4);
+			modelTest.nextQuestion();
+		}
+		String[] sWrong = new String[questionsNumber - questionsNumber / 2];
+		for (int i = questionsNumber / 2; i < questionsNumber; i++) {
+			sWrong[i - questionsNumber / 2] = tt[i].getQuestion();
+		}
+		String[] s = modelTest.getStringsWrongAnswer();
+		Assert.assertArrayEquals(s, sWrong);
 	}
 }
